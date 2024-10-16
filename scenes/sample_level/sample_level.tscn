@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://clyeieypynt1s"]
+
+[ext_resource type="MeshLibrary" uid="uid://3hkt6tsxpe6w" path="res://scenes/main/assets/industrial_mesh.tres" id="1_6si6w"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_dj6q1"]
+vertices = PackedVector3Array(-31.55, 0.434546, -31.45, -31.55, 0.434546, -29.95, -30.55, 0.434546, -30.95, -28.05, 0.434546, -30.95, 15.45, 0.434546, -31.45, -29.8, 0.434546, -25.95, -31.55, 0.434546, -27.2, -31.55, 0.434546, 15.55, -27.8, 0.434546, -26.2, -26.8, 0.434546, -27.45, 15.45, 0.434546, 15.55, -26.8, 0.434546, -29.7, -28.3, 0.434546, -29.45, -28.8, 0.434546, -29.7, -29.8, 0.434546, -29.7, -29.8, 0.434546, -27.45, -28.55, 0.434546, -27.45, -28.05, 0.434546, -28.2, -30.55, 0.434546, -28.7)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(7, 6, 5), PackedInt32Array(7, 5, 8), PackedInt32Array(8, 9, 7), PackedInt32Array(7, 9, 10), PackedInt32Array(10, 9, 4), PackedInt32Array(9, 11, 4), PackedInt32Array(11, 3, 4), PackedInt32Array(14, 13, 12), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 12), PackedInt32Array(12, 15, 14), PackedInt32Array(14, 15, 18)]
+
+[node name="SampleLevel" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_dj6q1")
+
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
+mesh_library = ExtResource("1_6si6w")
+cell_size = Vector3(0.1, 0.1, 0.1)
+data = {
+"cells": PackedInt32Array(65455, 80, 1048632, 65455, 65456, 1048632, 79, 65456, 1048632, 79, 80, 1048632, 65295, 65456, 1048632, 65297, 80, 1048632, 65243, 65250, 1048588, 65295, 65296, 56, 65454, 65296, 56, 78, 65296, 56)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)

@@ -1,3 +1,54 @@
-[gd_scene format=3 uid="uid://i8b13apl0m8"]
+[gd_scene load_steps=7 format=3 uid="uid://i8b13apl0m8"]
 
-[node name="Player" type="Node3D"]
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_auykd"]
+[ext_resource type="Texture2D" uid="uid://ccrexxrxak4lf" path="res://entities/player/assets/crosshair.png" id="2_jyfxi"]
+[ext_resource type="PackedScene" uid="uid://dvox5a71ah0bf" path="res://entities/player/gun.tscn" id="3_svxrk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y68rv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_reguy"]
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_40qqu"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_auykd")
+
+[node name="StandingCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_y68rv")
+
+[node name="CrouchingCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("CapsuleShape3D_reguy")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="GunRayCast3D" type="RayCast3D" parent="Head/Camera3D"]
+target_position = Vector3(0, 0, -200)
+
+[node name="TextureRect" type="TextureRect" parent="Head/Camera3D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 940.0
+offset_top = 520.0
+offset_right = -940.0
+offset_bottom = -520.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_jyfxi")
+expand_mode = 4
+
+[node name="Gun" parent="Head" instance=ExtResource("3_svxrk")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.5, -0.3, -0.7)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_40qqu")
+
+[node name="HeadRayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 2, 0)
