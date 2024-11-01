@@ -67,8 +67,9 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
-		head.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY))
+		var mouse_event: InputEventMouseMotion = event
+		rotate_y(deg_to_rad(-mouse_event.relative.x * MOUSE_SENSITIVITY))
+		head.rotate_x(deg_to_rad(-mouse_event.relative.y * MOUSE_SENSITIVITY))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 func _handle_collisions(delta: float) -> void:
@@ -96,7 +97,8 @@ func _handle_shoot() -> void:
 		if gun_ray_cast_3d.is_colliding():
 			var target: Node3D = gun_ray_cast_3d.get_collider()
 			if target is Enemy:
-				target.hit()
+				var enemy: Enemy = target
+				enemy.hit()
 
 #region Movement Functions
 func _handle_jump() -> void:

@@ -1,19 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://tdyxjrkco537"]
+[gd_scene load_steps=6 format=3 uid="uid://tdyxjrkco537"]
 
 [ext_resource type="PackedScene" uid="uid://i8b13apl0m8" path="res://entities/player/player.tscn" id="1_4wqtf"]
-[ext_resource type="PackedScene" uid="uid://clyeieypynt1s" path="res://scenes/sample_level/sample_level.tscn" id="1_aejoj"]
+[ext_resource type="PackedScene" uid="uid://clyeieypynt1s" path="res://scenes/industrial_level/industrial_level.tscn" id="1_aejoj"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_sbr6y"]
 [ext_resource type="PackedScene" uid="uid://d4epjdm3mcgc5" path="res://entities/thin_man/thin_man.tscn" id="3_7cvmp"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qm021"]
-
-[sub_resource type="Sky" id="Sky_0gpam"]
-sky_material = SubResource("ProceduralSkyMaterial_qm021")
-
-[sub_resource type="Environment" id="Environment_auu1f"]
+[sub_resource type="Environment" id="Environment_m4d1d"]
 background_mode = 1
-sky = SubResource("Sky_0gpam")
-tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(0.0820509, 0.093329, 0.11106, 1)
+fog_light_energy = 0.15
+fog_density = 0.1
+fog_sky_affect = 0.85
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_sbr6y")
@@ -21,12 +19,8 @@ enemy_scene = ExtResource("3_7cvmp")
 
 [node name="Environment" type="Node3D" parent="."]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(0.654741, -0.566974, 0.499855, 0, 0.661312, 0.750111, -0.755853, -0.491128, 0.432988, 0, 0, 0)
-shadow_enabled = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
-environment = SubResource("Environment_auu1f")
+environment = SubResource("Environment_m4d1d")
 
 [node name="Stage" type="Node3D" parent="."]
 
@@ -34,15 +28,8 @@ environment = SubResource("Environment_auu1f")
 
 [node name="MonsterSpawner" type="Timer" parent="Stage"]
 wait_time = 0.5
-autostart = true
 
 [node name="Player" parent="." instance=ExtResource("1_4wqtf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.9488, 2, 41.392)
-
-[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_7cvmp")]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 2.1, 0)
-axis_lock_angular_x = false
-axis_lock_angular_z = false
-target = NodePath("../Player")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.948799, 2, 21.392)
 
 [connection signal="timeout" from="Stage/MonsterSpawner" to="." method="_on_monster_spawner_timeout"]
