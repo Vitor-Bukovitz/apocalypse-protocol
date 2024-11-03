@@ -7,7 +7,7 @@ extends Node3D
 @onready var player: Player = $Player
 @onready var spawn_points: Node3D = $SpawnPoints
 @onready var wave_label: Label = $UserInterface/WaveLabel
-
+@onready var spawn_timer: Timer = $SpawnTimer
 
 # x10 enemies per wave
 var wave_count: int = 1
