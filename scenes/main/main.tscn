@@ -1,35 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://tdyxjrkco537"]
+[gd_scene load_steps=3 format=3 uid="uid://tdyxjrkco537"]
 
-[ext_resource type="PackedScene" uid="uid://i8b13apl0m8" path="res://entities/player/player.tscn" id="1_4wqtf"]
-[ext_resource type="PackedScene" uid="uid://clyeieypynt1s" path="res://scenes/industrial_level/industrial_level.tscn" id="1_aejoj"]
+[ext_resource type="PackedScene" uid="uid://ce4by5hu75hgn" path="res://scenes/industrial_level/industrial_level.tscn" id="1_aejoj"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_sbr6y"]
-[ext_resource type="PackedScene" uid="uid://d4epjdm3mcgc5" path="res://entities/thin_man/thin_man.tscn" id="3_7cvmp"]
-
-[sub_resource type="Environment" id="Environment_m4d1d"]
-background_mode = 1
-glow_enabled = true
-fog_light_color = Color(0.0820509, 0.093329, 0.11106, 1)
-fog_light_energy = 0.15
-fog_density = 0.1
-fog_sky_affect = 0.85
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_sbr6y")
-enemy_scene = ExtResource("3_7cvmp")
 
-[node name="Environment" type="Node3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
-environment = SubResource("Environment_m4d1d")
-
-[node name="Stage" type="Node3D" parent="."]
-
-[node name="SampleLevel" parent="Stage" instance=ExtResource("1_aejoj")]
-
-[node name="MonsterSpawner" type="Timer" parent="Stage"]
-wait_time = 0.5
-
-[node name="Player" parent="." instance=ExtResource("1_4wqtf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.948799, 2, 21.392)
-
-[connection signal="timeout" from="Stage/MonsterSpawner" to="." method="_on_monster_spawner_timeout"]
+[node name="IndustrialLevel" parent="." instance=ExtResource("1_aejoj")]

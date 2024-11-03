@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://fxskh502jske"
-path="res://.godot/imported/scene.gltf-362c1032d955800b05f4f89fbef87dac.scn"
+path="res://.godot/imported/thin_man.gltf-39901504e4495dd71203a33a20f8026b.scn"
 
 [deps]
 
-source_file="res://entities/thin_man/assets/scene.gltf"
-dest_files=["res://.godot/imported/scene.gltf-362c1032d955800b05f4f89fbef87dac.scn"]
+source_file="res://entities/thin_man_enemy/assets/thin_man.gltf"
+dest_files=["res://.godot/imported/thin_man.gltf-39901504e4495dd71203a33a20f8026b.scn"]
 
 [params]
 

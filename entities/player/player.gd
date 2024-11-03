@@ -37,6 +37,7 @@ var head_bobbing_current_intensity: float = 0.0
 var current_speed: float = 5.0
 var direction: Vector3 = Vector3.ZERO
 var player_state: PlayerState = PlayerState.WALKING
+var current_health: int = 100
 
 var was_on_floor_last_frame: bool = false
 var snapped_to_stairs_last_frame: bool = false
@@ -49,6 +50,7 @@ var snapped_to_stairs_last_frame: bool = false
 @onready var gun_ray_cast_3d: RayCast3D = $Head/Camera3D/GunRayCast3D
 @onready var camera_3d: Camera3D = $Head/Camera3D
 @onready var gun: Gun = $Head/Gun
+@onready var hp_label: Label = $UserInterface/MarginContainer/HPLabel
 
 enum PlayerState {
 	WALKING, SPRINTING, CROUCHING
@@ -153,4 +155,10 @@ func _snap_to_stairs() -> void:
 	
 	snapped_to_stairs_last_frame = did_snap
 	was_on_floor_last_frame = is_on_floor()
+#endregion
+
+#region Public Functions
+func take_damage(damage: int) -> void:
+	current_health -= damage
+	hp_label.text = "HP: " + str(current_health)
 #endregion

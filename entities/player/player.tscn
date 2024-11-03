@@ -33,9 +33,27 @@ spot_range = 50.0
 [node name="GunRayCast3D" type="RayCast3D" parent="Head/Camera3D"]
 target_position = Vector3(0, 0, -200)
 
-[node name="Aim" type="TextureRect" parent="Head/Camera3D"]
+[node name="Gun" parent="Head" instance=ExtResource("3_svxrk")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.5, -0.3, -0.7)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_40qqu")
+
+[node name="HeadRayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 2, 0)
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Aim" type="TextureRect" parent="UserInterface"]
 clip_contents = true
 custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -52,11 +70,18 @@ size_flags_vertical = 4
 texture = ExtResource("2_jyfxi")
 expand_mode = 1
 
-[node name="Gun" parent="Head" instance=ExtResource("3_svxrk")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.5, -0.3, -0.7)
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 130.0
+grow_vertical = 0
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_bottom = 36
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_40qqu")
-
-[node name="HeadRayCast3D" type="RayCast3D" parent="."]
-target_position = Vector3(0, 2, 0)
+[node name="HPLabel" type="Label" parent="UserInterface/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "HP: 100"
