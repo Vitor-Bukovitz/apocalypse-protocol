@@ -360,6 +360,7 @@ _data = {
 radius = 1.5
 
 [node name="ThinManEnemy" instance=ExtResource("1_623ui")]
+floor_stop_on_slope = false
 floor_block_on_wall = false
 script = ExtResource("2_rgonv")
 health = 20.0

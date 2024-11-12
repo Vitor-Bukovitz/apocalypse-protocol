@@ -7,7 +7,6 @@
 [node name="Enemy" type="CharacterBody3D"]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-motion_mode = 1
 script = ExtResource("1_i4a8g")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

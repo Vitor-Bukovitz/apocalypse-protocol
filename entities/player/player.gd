@@ -14,7 +14,7 @@ const LERP_SPEED: float = 15.0
 const AIR_LERP_SPEED: float = 3.0
 const CROUCH_DEPTH: float = -0.5
 
-const MOUSE_SENSITIVITY: float = 0.1
+const MOUSE_SENSITIVITY: float = 0.05
 
 # Head Bobbing Constants
 const HEAD_BOBBING_SPEED: Dictionary = {
