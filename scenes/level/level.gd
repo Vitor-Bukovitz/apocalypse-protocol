@@ -13,6 +13,10 @@ extends Node3D
 var wave_count: int = 1
 var spawned_enemies: int = 0
 
+func _ready() -> void:
+	await get_tree().create_timer(10).timeout
+	spawn_timer.start()
+
 func _on_spawn_timer_timeout() -> void:
 	if spawned_enemies >= wave_count * 10:
 		spawned_enemies = 0

@@ -51,6 +51,7 @@ var snapped_to_stairs_last_frame: bool = false
 @onready var camera_3d: Camera3D = $Head/Camera3D
 @onready var gun: Gun = $Head/Gun
 @onready var hp_label: Label = $UserInterface/MarginContainer/HPLabel
+@onready var user_interface: Control = $UserInterface
 
 enum PlayerState {
 	WALKING, SPRINTING, CROUCHING
@@ -161,4 +162,12 @@ func _snap_to_stairs() -> void:
 func take_damage(damage: int) -> void:
 	current_health -= damage
 	hp_label.text = "HP: " + str(current_health)
+
+func hide_ui() -> void:
+	user_interface.visible = false
+	gun.visible = false
+
+func show_ui() -> void:
+	user_interface.visible = true
+	gun.visible = true
 #endregion

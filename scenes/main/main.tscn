@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://tdyxjrkco537"]
+[gd_scene load_steps=3 format=3 uid="uid://tdyxjrkco537"]
 
 [ext_resource type="PackedScene" uid="uid://ce4by5hu75hgn" path="res://scenes/industrial_level/industrial_level.tscn" id="1_aejoj"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_sbr6y"]
-[ext_resource type="PackedScene" uid="uid://d4epjdm3mcgc5" path="res://entities/thin_man_enemy/thin_man_enemy.tscn" id="3_8ymp3"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_sbr6y")
 
 [node name="IndustrialLevel" parent="." instance=ExtResource("1_aejoj")]
-enemy_scene = ExtResource("3_8ymp3")
